@@ -1,10 +1,11 @@
 <?php
 
+use App\Http\Controllers\dashboard_controller;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('login');
 });
 
 Route::get('/dashboard', function () {
@@ -16,5 +17,17 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+
+// admin routes 
+
+    Route::get('/dashboard', [dashboard_controller::class, 'dashboard'])->middleware(['auth', 'verified'])->name('dashboard');
+
+
+// admin routes 
+
+
+
+
 
 require __DIR__.'/auth.php';
