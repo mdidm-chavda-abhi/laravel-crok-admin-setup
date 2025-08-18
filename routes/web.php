@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\dashboard_controller;
+use App\Http\Controllers\person_controller;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -25,6 +26,25 @@ Route::middleware('auth')->group(function () {
 
 
 // admin routes 
+
+//  person 
+
+Route::get('/person/list', [person_controller::class, 'List'])->middleware(['auth', 'verified'])->name('person.list');
+
+Route::get('/person/add', [person_controller::class, 'Add'])->middleware(['auth', 'verified'])->name('person.add');
+
+Route::get('/person/edit/{id}', [person_controller::class, 'edit'])->middleware(['auth', 'verified'])->name('person.edit');
+
+
+Route::post('/person/update/{id}', [person_controller::class, 'update'])->middleware(['auth', 'verified'])->name('person.update');
+
+Route::get('/person/delete/{id}', [person_controller::class, 'delete'])->middleware(['auth', 'verified'])->name('person.delete');
+
+Route::post('/person/store', [person_controller::class, 'store'])->middleware(['auth', 'verified'])->name('person.store');
+
+
+
+//  person 
 
 
 

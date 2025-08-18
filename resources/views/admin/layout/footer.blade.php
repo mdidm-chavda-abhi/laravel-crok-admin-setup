@@ -14,6 +14,8 @@
     </div>
     <!-- END MAIN CONTAINER -->
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
     <!-- BEGIN GLOBAL MANDATORY SCRIPTS -->
     <script src="{{asset('src/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
     <script src="{{asset('src/plugins/src/perfect-scrollbar/perfect-scrollbar.min.js')}}"></script>
@@ -25,3 +27,16 @@
     <script src="{{asset('src/plugins/src/apex/apexcharts.min.js')}}"></script>
     <script src="{{asset('src/assets/js/dashboard/dash_1.js')}}"></script>
     <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM SCRIPTS -->
+
+      <!-- BEGIN THEME GLOBAL STYLE -->
+    <script src="{{asset('src/assets/js/scrollspyNav.js')}}"></script>
+    <script src="{{asset('src/plugins/src/sweetalerts2/sweetalerts2.min.js')}}"></script>
+    <script src="{{asset('src/plugins/src/sweetalerts2/custom-sweetalert.js')}}"></script>
+    <!-- END THEME GLOBAL STYLE -->  
+
+
+        <!-- BEGIN GLOBAL MANDATORY STYLES -->
+ 
+    <script src="{{asset('src/plugins/src/highlight/highlight.pack.js')}}"></script>
+    <!-- END GLOBAL MANDATORY STYLES -->
+    
