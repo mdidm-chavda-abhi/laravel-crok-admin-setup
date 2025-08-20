@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\dashboard_controller;
 use App\Http\Controllers\person_controller;
+use App\Http\Controllers\work_controller;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -45,6 +46,20 @@ Route::post('/person/store', [person_controller::class, 'store'])->middleware(['
 
 
 //  person 
+
+// work 
+
+
+Route::get('/work/list', [work_controller::class, 'List'])->middleware(['auth', 'verified'])->name('work.list');
+Route::get('/work/add', [work_controller::class, 'Add'])->middleware(['auth', 'verified'])->name('work.add');
+Route::get('/work/edit/{id}', [work_controller::class, 'edit'])->middleware(['auth', 'verified'])->name('work.edit');
+Route::post('/work/update/{id}', [work_controller::class, 'update'])->middleware(['auth', 'verified'])->name('work.update');
+Route::get('/work/delete/{id}', [work_controller::class, 'delete'])->middleware(['auth', 'verified'])->name('work.delete');
+Route::post('/work/store', [work_controller::class, 'store'])->middleware(['auth', 'verified'])->name('work.store');
+
+
+// work 
+
 
 
 

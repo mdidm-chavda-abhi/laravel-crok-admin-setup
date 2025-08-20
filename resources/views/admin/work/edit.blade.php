@@ -10,16 +10,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
         <title>Trackmywork Admin </title>
 
+
         <!-- BEGIN PAGE LEVEL CUSTOM STYLES -->
         <link href="{{ asset('src/assets/css/light/scrollspyNav.css') }}" rel="stylesheet" type="text/css" />
         <link href="{{ asset('src/assets/css/dark/scrollspyNav.css') }}" rel="stylesheet" type="text/css" />
         <!-- BEGIN PAGE LEVEL CUSTOM STYLES -->
-
-        
-    <link rel="stylesheet" type="text/css" href="{{asset('src/plugins/src/tomSelect/tom-select.default.min.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('src/plugins/css/light/tomSelect/custom-tomSelect.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('src/plugins/css/dark/tomSelect/custom-tomSelect.css')}}">
-
     @endsection
 
     @section('main')
@@ -55,7 +50,7 @@
 
                                 </div>
                             </div>
-                        
+                          
                         </header>
                     </div>
                 </div>
@@ -67,15 +62,15 @@
 
                 </div>
                 <div class="row">
-                    <form action="{{ route('work.store') }}" method="POST" class="row g-3 needs-validation"
+                    <form action="{{ route('person.update',$client->id) }}" method="POST" class="row g-3 needs-validation"
                         novalidate>
                         @csrf
 
                         {{-- Name --}}
                         <div class="col-md-6 position-relative">
-                            <label for="name" class="form-label">Work Name</label>
+                            <label for="name" class="form-label">Name</label>
                             <input type="text" name="name" id="name"
-                                class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}"
+                                class="form-control @error('name') is-invalid @enderror" value="{{ $client->name }}"
                                 required>
                             <div class="invalid-tooltip">
                                 @error('name')
@@ -86,19 +81,38 @@
                             </div>
                         </div>
 
-                        <select id="select-beast" placeholder="Select a person..." autocomplete="off">
-                            <option value="">Select a person...</option>
-                            <option value="4">Thomas Edison</option>
-                            <option value="1">Nikola</option>
-                            <option value="3">Nikola Tesla</option>
-                            <option value="5">Arnold Schwarzenegger</option>
-                        </select>
+                        {{-- WhatsApp Number --}}
+                        <div class="col-md-6 position-relative">
+                            <label for="whatsapp_number" class="form-label">WhatsApp Number</label>
+                            <input type="number" name="whatsapp_number" id="whatsapp_number"
+                                class="form-control @error('whatsapp_number') is-invalid @enderror"
+                                value="{{ $client->whatsapp_number }}" required>
+                            <div class="invalid-tooltip">
+                                @error('whatsapp_number')
+                                    {{ $message }}
+                                @else
+                                    Please enter a valid WhatsApp number.
+                                @enderror
+                            </div>
+                        </div>
 
-                        {{-- WhatsApp Number --}}   
-                       
+                        {{-- Description --}}
+                        <div class="col-md-12 position-relative">
+                            <label for="description" class="form-label">Description</label>
+                            <textarea name="description" id="description" class="form-control @error('description') is-invalid @enderror"
+                                rows="4" >{{ $client->description }}</textarea>
+                            <div class="invalid-tooltip">
+                                @error('description')
+                                    {{ $message }}
+                                @else
+                                    Please enter a description.
+                                @enderror
+                            </div>
+                        </div>
+
                         {{-- Submit --}}
                         <div class="col-12">
-                            <button class="btn btn-primary" type="submit">Store Form</button>
+                            <button class="btn btn-primary" type="submit">Update Form</button>
                         </div>
                     </form>
                 </div>
@@ -127,10 +141,6 @@
         <!--  END CUSTOM SCRIPTS FILE  -->
 
 
-        <script src="{{asset('src/plugins/src/tomSelect/tom-select.base.js')}}"></script>
-        <script src="{{asset('src/plugins/src/tomSelect/custom-tom-select.js')}}"></script>
-
-
 
         <script>
             window.addEventListener('load', function() {
@@ -148,7 +158,6 @@
                 });
             }, false);
         </script>
-
 
 <script>
 $(document).ready(function () {
@@ -181,17 +190,6 @@ $(document).ready(function () {
 </script>
 
 
-<script>
-    // Select Box
-
-new TomSelect("#select-beast",{
-    create: true,
-    sortField: {
-        field: "text",
-        direction: "asc"
-    }
-});
-</script>
 
         </body>
 
