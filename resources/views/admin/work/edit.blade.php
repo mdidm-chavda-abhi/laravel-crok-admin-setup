@@ -8,12 +8,19 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
-        <title>Trackmywork Admin </title>
+        <title>Work - Trackmywork Admin </title>
 
 
         <!-- BEGIN PAGE LEVEL CUSTOM STYLES -->
         <link href="{{ asset('src/assets/css/light/scrollspyNav.css') }}" rel="stylesheet" type="text/css" />
         <link href="{{ asset('src/assets/css/dark/scrollspyNav.css') }}" rel="stylesheet" type="text/css" />
+
+        <link rel="stylesheet" type="text/css" href="{{ asset('src/plugins/src/tomSelect/tom-select.default.min.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('src/plugins/css/light/tomSelect/custom-tomSelect.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('src/plugins/css/dark/tomSelect/custom-tomSelect.css') }}">
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
         <!-- BEGIN PAGE LEVEL CUSTOM STYLES -->
     @endsection
 
@@ -43,76 +50,151 @@
 
                                     <nav class="breadcrumb-style-one" aria-label="breadcrumb">
                                         <ol class="breadcrumb">
-                                            <li class="breadcrumb-item"><a href="#">Datatables</a></li>
-                                            <li class="breadcrumb-item active" aria-current="page">Persons List</li>
+                                            <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+                                            <li class="breadcrumb-item active" aria-current="page">Edit Work</li>
                                         </ol>
                                     </nav>
 
                                 </div>
                             </div>
-                          
+
                         </header>
                     </div>
                 </div>
                 <!--  END BREADCRUMBS  -->
 
 
+                <style>
+                    .category-card {
+                        background-color: #007bff;
+                        /* Primary by default */
+                        color: #fff;
+                        border: 2px solid #007bff;
+                        border-radius: 8px;
+                        transition: all 0.3s ease;
+                        position: relative;
+                    }
+
+                    .category-card .check-icon {
+                        position: absolute;
+                        top: 8px;
+                        right: 12px;
+                        font-size: 20px;
+                        font-weight: bold;
+                    }
+
+                    .category-card.selected {
+                        background-color: #28a745;
+                        /* Success when selected */
+                        border: 2px solid #218838;
+                    }
+
+                    .category-card.selected .check-icon i {
+                        content: "\f14a";
+                        /* Font Awesome checked square */
+                        font-family: "Font Awesome 5 Free";
+                        font-weight: 900;
+                    }
+                </style>
 
                 <div class="seperator-header">
 
                 </div>
                 <div class="row">
-                    <form action="{{ route('person.update',$client->id) }}" method="POST" class="row g-3 needs-validation"
+                    <form action="{{ route('work.update', $work->id) }}" method="POST" class="row g-3 needs-validation"
                         novalidate>
                         @csrf
+                        @method('PUT')
 
-                        {{-- Name --}}
+                        {{-- Work Name --}}
                         <div class="col-md-6 position-relative">
-                            <label for="name" class="form-label">Name</label>
-                            <input type="text" name="name" id="name"
-                                class="form-control @error('name') is-invalid @enderror" value="{{ $client->name }}"
-                                required>
+                            <label for="work_name" class="form-label">Work Name</label>
+                            <input type="text" name="work_name" id="work_name"
+                                class="form-control @error('work_name') is-invalid @enderror" required
+                                value="{{ $work->work_name }}">
                             <div class="invalid-tooltip">
-                                @error('name')
+                                @error('work_name')
                                     {{ $message }}
                                 @else
-                                    Please enter a name.
+                                    Please enter a work name.
                                 @enderror
                             </div>
                         </div>
 
-                        {{-- WhatsApp Number --}}
+                        {{-- Select Person --}}
                         <div class="col-md-6 position-relative">
-                            <label for="whatsapp_number" class="form-label">WhatsApp Number</label>
-                            <input type="number" name="whatsapp_number" id="whatsapp_number"
-                                class="form-control @error('whatsapp_number') is-invalid @enderror"
-                                value="{{ $client->whatsapp_number }}" required>
+                            <label for="person_id" class="form-label">Select Person</label>
+                            <select id="select-beast" name="person_id"
+                                class="form-control @error('person_id') is-invalid @enderror"
+                                placeholder="Select a person...">
+                                <option value="" disabled>Select a person...</option>
+                                @foreach ($clients as $client)
+                                    <option value="{{ $client->id }}"
+                                        {{ $work->client_id == $client->id ? 'selected' : '' }}>
+                                        {{ $client->name }}
+                                    </option>
+                                @endforeach
+                            </select>
                             <div class="invalid-tooltip">
-                                @error('whatsapp_number')
+                                @error('person_id')
                                     {{ $message }}
                                 @else
-                                    Please enter a valid WhatsApp number.
+                                    Please select a person.
                                 @enderror
                             </div>
                         </div>
 
-                        {{-- Description --}}
-                        <div class="col-md-12 position-relative">
-                            <label for="description" class="form-label">Description</label>
-                            <textarea name="description" id="description" class="form-control @error('description') is-invalid @enderror"
-                                rows="4" >{{ $client->description }}</textarea>
+                        {{-- Select Bank --}}
+                        <div class="col-md-6 position-relative">
+                            <label for="bank_id" class="form-label">Select Bank</label>
+                            <select id="select-bank" name="bank_id"
+                                class="form-control @error('bank_id') is-invalid @enderror" placeholder="Select a bank...">
+                                <option value="" disabled>Select a bank...</option>
+                                @foreach ($banks as $bank)
+                                    <option value="{{ $bank->id }}"
+                                        {{ $work->bank_id == $bank->id ? 'selected' : '' }}>
+                                        {{ $bank->bank_name }}
+                                    </option>
+                                @endforeach
+                            </select>
                             <div class="invalid-tooltip">
-                                @error('description')
+                                @error('bank_id')
                                     {{ $message }}
                                 @else
-                                    Please enter a description.
+                                    Please select a bank.
                                 @enderror
                             </div>
                         </div>
+
+                        {{-- Categories --}}
+                        <div class="col-md-12 mt-3">
+                            <label class="form-label">Select Category</label>
+                            <div class="d-flex flex-wrap gap-3">
+                                @foreach ($categories as $category)
+                                    <div class="card category-card
+                                        {{ $work->category_id == $category->id ? 'selected bg-success text-white' : '' }}"
+                                        data-id="{{ $category->id }}"
+                                        style="cursor:pointer; width:180px; position: relative;">
+                                        <div class="card-body text-center">
+                                            <h5 class="card-title mb-0">{{ $category->name }}</h5>
+                                            <span class="check-icon">
+                                                <i
+                                                    class="{{ $work->category_id == $category->id ? 'far fa-check-square' : 'far fa-square' }}"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+                            <input type="hidden" name="category_id" id="selected_category"
+                                value="{{ $work->category_id }}">
+                        </div>
+
+
+
 
                         {{-- Submit --}}
                         <div class="col-12">
-                            <button class="btn btn-primary" type="submit">Update Form</button>
+                            <button class="btn btn-primary" type="submit">Update Work</button>
                         </div>
                     </form>
                 </div>
@@ -141,53 +223,127 @@
         <!--  END CUSTOM SCRIPTS FILE  -->
 
 
+        <!-- BEGIN PAGE LEVEL SCRIPTS -->
+        <script src="{{ asset('src/plugins/src/tomSelect/tom-select.base.js') }}"></script>
+        <script src="{{ asset('src/plugins/src/tomSelect/custom-tom-select.js') }}"></script>
+
+
 
         <script>
             window.addEventListener('load', function() {
-                // Fetch all the forms we want to apply custom Bootstrap validation styles to
                 var forms = document.getElementsByClassName('needs-validation');
-                // Loop over them and prevent submission
-                var validation = Array.prototype.filter.call(forms, function(form) {
+
+                Array.prototype.filter.call(forms, function(form) {
                     form.addEventListener('submit', function(event) {
+                        let categoryInput = document.getElementById('selected_category');
+
+                        // Custom validation for category selection
+                        if (!categoryInput.value) {
+                            event.preventDefault();
+                            event.stopPropagation();
+
+                            // Show a custom Bootstrap validation tooltip
+                            showCategoryError();
+                        } else {
+                            hideCategoryError();
+                        }
+
                         if (form.checkValidity() === false) {
                             event.preventDefault();
                             event.stopPropagation();
                         }
+
                         form.classList.add('was-validated');
                     }, false);
+                });
+
+                function showCategoryError() {
+                    let categoryWrapper = document.querySelector('.d-flex.flex-wrap');
+                    if (!document.querySelector('.category-error')) {
+                        let errorDiv = document.createElement('div');
+                        errorDiv.className = 'invalid-tooltip category-error';
+                        errorDiv.style.display = 'block';
+                        errorDiv.innerText = 'Please select a category.';
+                        categoryWrapper.parentNode.appendChild(errorDiv);
+                    }
+                }
+
+                function hideCategoryError() {
+                    let errorDiv = document.querySelector('.category-error');
+                    if (errorDiv) {
+                        errorDiv.remove();
+                    }
+                }
+
+                // Also remove error when user selects a category
+                const categoryCards = document.querySelectorAll('.category-card');
+                categoryCards.forEach(card => {
+                    card.addEventListener('click', function() {
+                        hideCategoryError();
+                    });
                 });
             }, false);
         </script>
 
-<script>
-$(document).ready(function () {
-    $('form.needs-validation').on('submit', function (event) {
-        var phone = $('#whatsapp_number').val().trim();
-        var phoneRegex = /^[0-9]{10,15}$/; // 10 to 15 digits allowed
 
-        if (!phoneRegex.test(phone)) {
-            event.preventDefault();
-            event.stopPropagation();
-            $('#whatsapp_number').addClass('is-invalid');
-            $('#whatsapp_number').siblings('.invalid-tooltip').text('Please enter a valid WhatsApp number (10-15 digits).');
-        } else {
-            $('#whatsapp_number').removeClass('is-invalid');
-        }
-    });
 
-    // Optional: Real-time validation as user types
-    $('#whatsapp_number').on('input', function () {
-        var phone = $(this).val().trim();
-        var phoneRegex = /^[0-9]{10,15}$/;
 
-        if (!phoneRegex.test(phone)) {
-            $(this).addClass('is-invalid');
-        } else {
-            $(this).removeClass('is-invalid');
-        }
-    });
-});
-</script>
+
+
+        <script>
+            // Initialize TomSelect for Person Dropdown
+            new TomSelect("#select-beast", {
+                create: false,
+                sortField: {
+                    field: "text",
+                    direction: "asc"
+                }
+            });
+
+
+
+            // Bank Selection (only one at a time)
+            const bankCards = document.querySelectorAll('.bank-card');
+            const selectedBankInput = document.getElementById('selected_bank');
+
+            bankCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    bankCards.forEach(b => b.classList.remove('bg-primary', 'text-white'));
+                    this.classList.add('bg-primary', 'text-white');
+                    selectedBankInput.value = this.dataset.id;
+                });
+            });
+        </script>
+        <script>
+            const categoryCards = document.querySelectorAll('.category-card');
+            const selectedCategoryInput = document.getElementById('selected_category');
+
+            categoryCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    // Reset all cards
+                    categoryCards.forEach(c => {
+                        c.classList.remove('selected', 'bg-success', 'text-white');
+                        const icon = c.querySelector('.check-icon i');
+                        icon.className = 'far fa-square'; // Reset icon to empty checkbox
+                    });
+
+                    // Apply selected styles and icon to clicked card
+                    this.classList.add('selected', 'bg-success', 'text-white');
+                    const selectedIcon = this.querySelector('.check-icon i');
+                    selectedIcon.className = 'far fa-check-square'; // Checked checkbox
+
+                    // Update hidden input
+                    selectedCategoryInput.value = this.dataset.id;
+                });
+
+                // Preselect if old value exists
+                if (selectedCategoryInput.value === card.dataset.id) {
+                    card.classList.add('selected', 'bg-success', 'text-white');
+                    const selectedIcon = card.querySelector('.check-icon i');
+                    selectedIcon.className = 'far fa-check-square'; // Checked checkbox
+                }
+            });
+        </script>
 
 
 

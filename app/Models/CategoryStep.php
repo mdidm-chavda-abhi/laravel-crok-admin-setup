@@ -25,4 +25,10 @@ class CategoryStep extends Model
     {
         return $this->belongsTo(Category::class);
     }
+   public function options()
+{
+    return $this->hasMany(StepOption::class, 'step_id'); // correct foreign key
+}
+
+
 }

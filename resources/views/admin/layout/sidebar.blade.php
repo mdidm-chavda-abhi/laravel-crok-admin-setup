@@ -77,10 +77,16 @@
             </li>
 
             <li class="menu {{ request()->routeIs('work.*') ? 'active' : '' }}">
-                <a href="#users" data-bs-toggle="collapse"
+                <a href="#work" data-bs-toggle="collapse"
                     aria-expanded="{{ request()->routeIs('work.*') ? 'true' : 'false' }}" class="dropdown-toggle">
                     <div class="">
-                       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-layers"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" class="feather feather-layers">
+                            <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                            <polyline points="2 17 12 22 22 17"></polyline>
+                            <polyline points="2 12 12 17 22 12"></polyline>
+                        </svg>
                         <span>Work</span>
                     </div>
                     <div>
@@ -92,7 +98,7 @@
                     </div>
                 </a>
                 <ul class="collapse submenu list-unstyled {{ request()->routeIs('work.*') ? 'show' : '' }}"
-                    id="users" data-bs-parent="#accordionExample">
+                    id="work" data-bs-parent="#accordionExample">
                     <li>
                         <a href="{{ route('work.list') }}"
                             class="{{ request()->routeIs('work.list') ? 'active' : '' }}"> List </a>
@@ -104,6 +110,53 @@
                 </ul>
             </li>
 
+            <li class="menu {{ request()->routeIs('Chat.*') ? 'active' : '' }}">
+                <a href="{{ route('Chat.show') }}"  class="dropdown-toggle collapsed">
+                    <div class="">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" class="feather feather-cpu">
+                            <rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect>
+                            <rect x="9" y="9" width="6" height="6"></rect>
+                            <line x1="9" y1="1" x2="9" y2="4"></line>
+                            <line x1="15" y1="1" x2="15" y2="4"></line>
+                            <line x1="9" y1="20" x2="9" y2="23"></line>
+                            <line x1="15" y1="20" x2="15" y2="23"></line>
+                            <line x1="20" y1="9" x2="23" y2="9"></line>
+                            <line x1="20" y1="14" x2="23" y2="14"></line>
+                            <line x1="1" y1="9" x2="4" y2="9"></line>
+                            <line x1="1" y1="14" x2="4" y2="14"></line>
+                        </svg>
+                        <span>Chat</span>
+                    </div>
+
+                </a>
+
+            </li>
+
+             <li class="menu {{ request()->routeIs('cattree.*') ? 'active' : '' }}">
+                <a href="{{ route('cattree.show') }}"  class="dropdown-toggle collapsed">
+                    <div class="">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" class="feather feather-cpu">
+                            <rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect>
+                            <rect x="9" y="9" width="6" height="6"></rect>
+                            <line x1="9" y1="1" x2="9" y2="4"></line>
+                            <line x1="15" y1="1" x2="15" y2="4"></line>
+                            <line x1="9" y1="20" x2="9" y2="23"></line>
+                            <line x1="15" y1="20" x2="15" y2="23"></line>
+                            <line x1="20" y1="9" x2="23" y2="9"></line>
+                            <line x1="20" y1="14" x2="23" y2="14"></line>
+                            <line x1="1" y1="9" x2="4" y2="9"></line>
+                            <line x1="1" y1="14" x2="4" y2="14"></line>
+                        </svg>
+                        <span>TreeView </span>
+                    </div>
+
+                </a>
+
+            </li>
 
 
         </ul>

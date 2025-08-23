@@ -24,6 +24,8 @@ class Work extends Model
         return $this->belongsTo(Client::class);
     }
 
+
+
     // Work belongs to a category
     public function category()
     {
@@ -35,4 +37,21 @@ class Work extends Model
     {
         return $this->belongsTo(Bank::class);
     }
+
+    public function steps()
+    {
+        return $this->hasMany(WorkStep::class);
+    }
+
+    public function workSteps()
+{
+    return $this->hasMany(WorkStep::class, 'work_id'); // Assuming foreign key is work_id
+}
+
+public function workStepOptions()
+{
+    return $this->hasMany(WorkStepOption::class, 'work_id');
+}
+
+
 }

@@ -55,7 +55,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
-    <title>SignIn | </title>
+    <title>Sign In | Trackmywork </title>
     <link rel="icon" type="image/x-icon" href="https://designreset.com/cork/html/src/assets/img/favicon.ico"/>
     <link href="{{asset('layouts/vertical-dark-menu/css/light/loader.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{asset('layouts/vertical-dark-menu/css/dark/loader.css')}}" rel="stylesheet" type="text/css" />
@@ -69,7 +69,7 @@
     <link href="{{asset('layouts/vertical-dark-menu/css/dark/plugins.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{asset('src/assets/css/dark/authentication/auth-boxed.css')}}" rel="stylesheet" type="text/css" />
     <!-- END GLOBAL MANDATORY STYLES -->
-    
+
 </head>
 <body class="form">
 
@@ -82,7 +82,7 @@
     <div class="auth-container d-flex">
 
         <div class="container mx-auto align-self-center">
-    
+
             <div class="row">
     <div class="col-xxl-4 col-xl-5 col-lg-5 col-md-8 col-12 d-flex flex-column align-self-center mx-auto">
     <div class="card mt-3 mb-3">
@@ -101,9 +101,9 @@
                     <div class="col-md-12">
                         <div class="mb-3">
                             <label for="email" class="form-label">Email</label>
-                            <input id="email" type="email" 
-                                   class="form-control @error('email') is-invalid @enderror" 
-                                   name="email" value="{{ old('email') }}" 
+                            <input id="email" type="email"
+                                   class="form-control @error('email') is-invalid @enderror"
+                                   name="email" value="{{ old('email') }}"
                                    required autofocus autocomplete="username">
                             @error('email')
                                 <div class="invalid-feedback">{{ $message }}</div>
@@ -115,8 +115,8 @@
                     <div class="col-12">
                         <div class="mb-4">
                             <label for="password" class="form-label">Password</label>
-                            <input id="password" type="password" 
-                                   class="form-control @error('password') is-invalid @enderror" 
+                            <input id="password" type="password"
+                                   class="form-control @error('password') is-invalid @enderror"
                                    name="password" required autocomplete="current-password">
                             @error('password')
                                 <div class="invalid-feedback">{{ $message }}</div>
@@ -128,7 +128,7 @@
                     <div class="col-12">
                         <div class="mb-3">
                             <div class="form-check form-check-primary form-check-inline">
-                                <input class="form-check-input me-3" type="checkbox" 
+                                <input class="form-check-input me-3" type="checkbox"
                                        id="remember_me" name="remember" {{ old('remember') ? 'checked' : '' }}>
                                 <label class="form-check-label" for="remember_me">
                                     Remember me
@@ -149,7 +149,7 @@
                         <div class="text-center">
                             @if (Route::has('password.request'))
                                 <p class="mb-0">
-                                    Forgot Password? 
+                                    Forgot Password?
                                     <a href="{{ route('password.request') }}" class="text-warning">
                                         Generate New Password
                                     </a>
@@ -164,13 +164,13 @@
     </div>
 </div>
 
-                
+
             </div>
-            
+
         </div>
 
     </div>
-    
+
     <!-- BEGIN GLOBAL MANDATORY SCRIPTS -->
     <script src="{{asset('src/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
     <!-- END GLOBAL MANDATORY SCRIPTS -->

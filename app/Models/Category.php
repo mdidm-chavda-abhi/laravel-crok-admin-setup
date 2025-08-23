@@ -22,4 +22,8 @@ class Category extends Model
     {
         return $this->hasMany(CategoryStep::class);
     }
+    public function requiredDocs()
+    {
+        return $this->hasMany(RequiredDoc::class);
+    }
 }

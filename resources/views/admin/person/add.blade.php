@@ -15,7 +15,7 @@
         <link href="{{ asset('src/assets/css/dark/scrollspyNav.css') }}" rel="stylesheet" type="text/css" />
         <!-- BEGIN PAGE LEVEL CUSTOM STYLES -->
 
-        
+
     <link rel="stylesheet" type="text/css" href="{{asset('src/plugins/src/tomSelect/tom-select.default.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('src/plugins/css/light/tomSelect/custom-tomSelect.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('src/plugins/css/dark/tomSelect/custom-tomSelect.css')}}">
@@ -48,14 +48,14 @@
 
                                     <nav class="breadcrumb-style-one" aria-label="breadcrumb">
                                         <ol class="breadcrumb">
-                                            <li class="breadcrumb-item"><a href="#">Datatables</a></li>
-                                            <li class="breadcrumb-item active" aria-current="page">Persons List</li>
+                                            <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+                                            <li class="breadcrumb-item active" aria-current="page">Add Persons</li>
                                         </ol>
                                     </nav>
 
                                 </div>
                             </div>
-                        
+
                         </header>
                     </div>
                 </div>
@@ -86,16 +86,36 @@
                             </div>
                         </div>
 
-                        <select id="select-beast" placeholder="Select a person..." autocomplete="off">
-                            <option value="">Select a person...</option>
-                            <option value="4">Thomas Edison</option>
-                            <option value="1">Nikola</option>
-                            <option value="3">Nikola Tesla</option>
-                            <option value="5">Arnold Schwarzenegger</option>
-                        </select>
+                    {{-- WhatsApp Number --}}
+                        <div class="col-md-6 position-relative">
+                            <label for="whatsapp_number" class="form-label">WhatsApp Number</label>
+                            <input type="number" name="whatsapp_number" id="whatsapp_number"
+                                class="form-control @error('whatsapp_number') is-invalid @enderror"
+                                 required>
+                            <div class="invalid-tooltip">
+                                @error('whatsapp_number')
+                                    {{ $message }}
+                                @else
+                                    Please enter a valid WhatsApp number.
+                                @enderror
+                            </div>
+                        </div>
 
-                        {{-- WhatsApp Number --}}   
-                       
+                        {{-- Description --}}
+                        <div class="col-md-12 position-relative">
+                            <label for="description" class="form-label">Description</label>
+                            <textarea name="description" id="description" class="form-control @error('description') is-invalid @enderror"
+                                rows="4" ></textarea>
+                            <div class="invalid-tooltip">
+                                @error('description')
+                                    {{ $message }}
+                                @else
+                                    Please enter a description.
+                                @enderror
+                            </div>
+                        </div>
+
+
                         {{-- Submit --}}
                         <div class="col-12">
                             <button class="btn btn-primary" type="submit">Store Form</button>

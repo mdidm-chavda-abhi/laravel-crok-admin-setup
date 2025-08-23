@@ -10,7 +10,7 @@
     <link href="{{asset('layouts/vertical-dark-menu/css/dark/plugins.css')}}" rel="stylesheet" type="text/css" />
     <!-- END GLOBAL MANDATORY STYLES -->
 
- 
+
         <!-- BEGIN THEME GLOBAL STYLES -->
     <link rel="stylesheet" href="{{asset('src/plugins/src/sweetalerts2/sweetalerts2.css')}}">
     <link href="{{asset('src/assets/css/light/scrollspyNav.css')}}" rel="stylesheet" type="text/css" />
@@ -32,7 +32,7 @@
         <header class="header navbar navbar-expand-sm expand-header">
 
             <ul class="navbar-item theme-brand flex-row  text-center">
-                
+
                 <li class="nav-item theme-text">
                     <a href="index.html" class="nav-link"> Track My Work </a>
                 </li>
@@ -89,14 +89,14 @@
                                             <h6 class="">Kara Young</h6>
                                             <p class="">1 hr ago</p>
                                         </div>
-                                        
+
                                         <div class="icon-status">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div class="dropdown-item">
                                 <div class="media ">
                                     <img src="{{asset('src/assets/img/profile-15.jpg')}}" class="img-fluid me-2" alt="avatar">
@@ -128,7 +128,7 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div class="drodpown-title notification mt-2">
                                 <h6 class="d-flex justify-content-between"><span class="align-self-center">Notifications</span> <span class="badge badge-secondary">16 New</span></h6>
                             </div>
@@ -180,17 +180,17 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                         </div>
                     </div>
-                    
+
                 </li> --}}
 
                 <li class="nav-item dropdown user-profile-dropdown  order-lg-0 order-1">
                     <a href="javascript:void(0);" class="nav-link dropdown-toggle user" id="userProfileDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <div class="avatar-container">
                             <div class="avatar avatar-sm avatar-indicators avatar-online">
-                                <img alt="avatar" src="../src/assets/img/profile-30.png" class="rounded-circle">
+                                <img alt="avatar" src="{{ asset('src/assets/img/profile-30.png') }}" class="rounded-circle">
                             </div>
                         </div>
                     </a>
@@ -210,9 +210,9 @@
                         <!-- Profile -->
                         <div class="dropdown-item">
                             <a href="{{ route('profile.edit') }}">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" 
-                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" 
-                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" 
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                                     class="feather feather-user">
                                     <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
                                     <circle cx="12" cy="7" r="4"></circle>
@@ -234,11 +234,11 @@
                         <div class="dropdown-item">
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
-                                <a href="{{ route('logout') }}" 
+                                <a href="{{ route('logout') }}"
                                 onclick="event.preventDefault(); this.closest('form').submit();">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" 
-                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" 
-                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" 
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                        viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                                         class="feather feather-log-out">
                                         <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
                                         <polyline points="16 17 21 12 16 7"></polyline>
@@ -249,7 +249,7 @@
                             </form>
                         </div>
                     </div>
-                    
+
                 </li>
             </ul>
         </header>

@@ -320,7 +320,7 @@ body.dark .widget.widget-activity-five .w-shadow-bottom {
 }
 body.dark .widget.widget-activity-five .mt-container {
   position: relative;
-  height: 332px;
+  height: 100%;
   overflow: auto;
   padding: 15px 12px 0 12px;
 }
